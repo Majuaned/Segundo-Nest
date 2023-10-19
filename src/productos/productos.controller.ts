@@ -77,7 +77,6 @@ export class ProductosController {
   //     return this.products
   //   }
 
-
   @Post()
   // Se obtienen los parámetros del body, usando el modelo de CreateProductoDto, que vendría a ser como el model.
   create(@Body() {name, description, stock}: CreateProductoDto) {
@@ -100,9 +99,9 @@ export class ProductosController {
     return this.productosService.update(id, updateProductoDto);
   }
 
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.productosService.remove(+id);
-  // }
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.productosService.remove(id);
+  }
 }
 

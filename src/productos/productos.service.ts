@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 uuidv4();
 
 // ****** 1° Primero se crea una clase, la cual contendrá los métodos que se usarán en el controlador (productos.controller.ts)
+//******    Acá no se ponen los decoradores!!! (@get,@post,etc)   ******
 
 @Injectable()
 export class ProductosService {
@@ -21,7 +22,6 @@ export class ProductosService {
       name,
       description,
       stock
-      
     })
     return this.products
   }
@@ -33,14 +33,13 @@ export class ProductosService {
       description:'comida',
       stock: 10
     }
-  
   */
   
   // Método de muestra!!!
   getHello(): string {
     return 'Se muestra: Agregación de productos!!!';
   }
-  //******    Acá no se ponen los decoradores!!! (@get,@post,etc)   ******
+
   findAll() {
     return this.products
   }
@@ -65,9 +64,11 @@ export class ProductosService {
     })
   }
 
-  // remove(id: number) {
-  //   return `This action removes a #${id} producto`;
-  // }
+  remove(id: string) {
+    this.products = this.products.filter(prod => prod.id !== id )
+    console.log(this.products)
+    return this.products
+  }
 }
 
 /************  OBJETOS PARA HACER POST  *********************
